@@ -169,7 +169,6 @@
                             <!--
                             <tr class="mdc-data-table__row">
                                 <td class="mdc-data-table__cell">Frozen yogurt</td>
-                                
                                 <td class="mdc-data-table__cell mdc-data-table__cell--numeric">24</td>
                                 <td class="mdc-data-table__cell mdc-data-table__cell--numeric">4.0</td>
                                 <td class="mdc-data-table__cell">Super tasty</td>
@@ -188,9 +187,13 @@
                                 <td class="mdc-data-table__cell">New filing flavor</td>
                             </tr>
                             -->
+                            <tr class="template mdc-data-table__row">
+                                <td class="mdc-data-table__cell">Frozen yogurt</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
+                
             </div>
             
             <div class="view screen4-view" id="chart">
@@ -241,7 +244,7 @@
                     for (let countryName in data) {
                         let option = document.createElement("option");
                         option.value = countryName;
-                        dataList.append(option);
+                        dataList.appendChild(option);
                     }
             }); 
             
@@ -258,13 +261,13 @@
                     listItem.textContent = countryName;
                     listItem.style.color = "#000080";
                     countryItems.push(countryName);
-                    selectedCountries.append(listItem);
+                    selectedCountries.appendChild(listItem);
                 }
             });
             
             //const dataTable = new MDCDataTable(document.querySelector('.mdc-data-table'));
             //const dataTable = new mdc.dataTable.MDCDataTable.attachTo(document.querySelector('.mdc-data-table'));
-            const dataTable = document.querySelector('.mdc-data-table');
+            const dataTable = document.querySelector('div.mdc-data-table table.mdc-data-table__table');
             
             document.querySelector(".displayChart-button").addEventListener("click", (e) => {
                 fetch(apiEndpoint)
@@ -274,12 +277,10 @@
                 .then(data => {
                     for (const array of data["Afghanistan"]) {
                         console.log(array["date"]);
-                        let row = document.createElement("tr.mdc-data-table__row");
-                        //let td = document.createElement("td.mdc-data-table__cell");
-                        row.textContent = array["date"];
-                        //row.append(td);
-                        dataTable.append(row);
-                        //document.querySelector("tbody.mdc-data-table__content").append(row);
+                        let clone = document.querySelector("tbody.mdc-data-table__content tr.template").cloneNode(true);
+                        clone.classList.remove("template");
+                        clone.querySelector("td.mdc-data-table__cell").textContent = array["date"];
+                        dataTable.appendChild(clone);
                     }
                 }); 
             });
