@@ -40,9 +40,7 @@
             }
             input { width: 500px; }
             #list { display: inline-block; }
-            
             .template {display: none;}
-
         </style>
     </head>
 
@@ -189,10 +187,10 @@
                                 <td class="mdc-data-table__cell">New filing flavor</td>
                             </tr>
                             -->
-                            <tr class="template mdc-data-table__row">
-                                <td class="mdc-data-table__cell">Frozen yogurt</td>
-                            </tr>
                         </tbody>
+                        <tr class="template mdc-data-table__row">
+                            <td class="mdc-data-table__cell">Frozen yogurt</td>
+                        </tr>
                     </table>
                 </div>
                 
@@ -279,7 +277,7 @@
                 .then(data => {
                     for (const array of data["Afghanistan"]) {
                         console.log(array["date"]);
-                        let clone = dataTable.querySelector("tbody.mdc-data-table__content tr.template").cloneNode(true);
+                        let clone = dataTable.querySelector("tr.template").cloneNode(true);
                         clone.classList.remove("template");
                         clone.querySelector("td.mdc-data-table__cell").textContent = array["date"];
                         dataTable.appendChild(clone);
