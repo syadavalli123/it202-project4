@@ -277,7 +277,7 @@
                 .then(data => {
                     for (const array of data["Afghanistan"]) {
                         console.log(array["date"]);
-                        let clone = document.querySelector("tbody.mdc-data-table__content tr.template").cloneNode(true);
+                        let clone = dataTable.querySelector("tbody.mdc-data-table__content tr.template").cloneNode(true);
                         clone.classList.remove("template");
                         clone.querySelector("td.mdc-data-table__cell").textContent = array["date"];
                         dataTable.appendChild(clone);
