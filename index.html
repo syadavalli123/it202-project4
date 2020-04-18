@@ -11,6 +11,12 @@
         
         <style>
             :root { --mdc-theme-primary: navy; }
+            .mdc-drawer .mdc-list-item--activated .mdc-list-item__graphic {
+                color: var(--mdc-theme-primary);
+            }
+            .mdc-drawer .mdc-list-item--activated {
+                color: var(--mdc-theme-primary);
+            }
             body { 
                 margin: 0; 
                 background-color: beige;
@@ -21,7 +27,20 @@
                 display: none;
                 padding: 40px;
             }
-            #home { font-size: 40px; }
+            #home {
+                font-family: sans-serif;
+                font-size: 20px;
+            }
+            #world_map {
+                padding: 80px;
+                margin-left: auto;
+                margin-right: auto;
+                display: block;
+                position: absolute;
+            }
+            input { width: 500px; }
+            #list { display: inline-block; }
+            
         </style>
     </head>
 
@@ -50,33 +69,139 @@
         </aside>
         
         <div class="mdc-drawer-scrim"></div>
-        
+       
+
         <header class="mdc-top-app-bar">
             <div class="mdc-top-app-bar__row">
                 <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
                     <button class="material-icons mdc-top-app-bar__navigation-icon mdc-icon-button">menu</button>
-                    <span class="mdc-top-app-bar__title">COVID-19 Data ("confirmed cases")</span>
+                    <span class="mdc-top-app-bar__title">COVID-19 Data</span>
                 </section>
             </div>
         </header>
         
         <main class="mdc-top-app-bar--fixed-adjust">
-            <div class="view" id="home">
-                This app is exclusively for browsing through data for each country regarding the COVID-19 pandemic. 
+            <div class="view screen1-view" id="home">
+                For each country, you can access data 
+                that is about the number of confirmed cases, deaths, and patients who recovered from COVID-19.
+                <div id="world_map">
+                    <img src="world-map.jpg">
+                </div>
             </div>
-            <div class="view" id="search">
-                Search
+            <div class="view screen2-view" id="search">
+                <div style="padding-bottom: 20px">
+                    Find and add at least 1 country to be charted.
+                </div>
+                <div>
+                    <input list="countries" id="list">
+                    <datalist id="countries">
+                    </datalist>
+                    
+                    <button class="mdc-button addCountry-button mdc-button--raised">
+                        <div class="mdc-button__ripple"></div>
+                        <span class="mdc-button__label">Add Country</span>
+                    </button>
+                    
+                    <button class="mdc-button displayChart-button mdc-button--raised">
+                        <div class="mdc-button__ripple"></div>
+                        <span class="mdc-button__label">Display Chart</span>
+                    </button>
+                    
+                    <!-- Add display list of selected countries below-->
+                    <ul class="mdc-list">
+                    </ul>
+                    
+                    
+                </div>
             </div>
-            <div class="view" id="dataTable">
-                Data Table
+            
+            
+            <div class="view screen3-view" id="dataTable">
+                Data Table<br>
+                <!--
+                <div class="mdc-data-table">
+                    <table class="mdc-data-table__table" aria-label="Dessert calories">
+                        <thead>
+                            <tr class="mdc-data-table__header-row">
+                                <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Dessert</th>
+                                <th class="mdc-data-table__header-cell mdc-data-table__header-cell--numeric" role="columnheader" scope="col">Carbs (g)</th>
+                                <th class="mdc-data-table__header-cell mdc-data-table__header-cell--numeric" role="columnheader" scope="col">Protein (g)</th>
+                                <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Comments</th>
+                            </tr>
+                        </thead>
+                        <tbody class="mdc-data-table__content">
+                            <tr class="mdc-data-table__row">
+                                <td class="mdc-data-table__cell">Frozen yogurt</td>
+                                <td class="mdc-data-table__cell mdc-data-table__cell--numeric">24</td>
+                                <td class="mdc-data-table__cell mdc-data-table__cell--numeric">4.0</td>
+                                <td class="mdc-data-table__cell">Super tasty</td>
+                            </tr>
+                            <tr class="mdc-data-table__row">
+                                <td class="mdc-data-table__cell">Ice cream sandwich</td>
+                                <td class="mdc-data-table__cell mdc-data-table__cell--numeric">37</td>
+                                <td class="mdc-data-table__cell mdc-data-table__cell--numeric">4.33333333333</td>
+                                <td class="mdc-data-table__cell">I like ice cream more</td>
+                            </tr>
+                            <tr class="mdc-data-table__row">
+                                <td class="mdc-data-table__cell">Eclair</td>
+                                <td class="mdc-data-table__cell mdc-data-table__cell--numeric">24</td>
+                                <td class="mdc-data-table__cell mdc-data-table__cell--numeric">6.0</td>
+                                <td class="mdc-data-table__cell">New filing flavor</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                -->
+            
+                <div class="mdc-data-table">
+                    <table class="mdc-data-table__table" aria-label="COVID-19 Confirmed Cases by Country">
+                        <thead>
+                            <tr class="mdc-data-table__header-row">
+                                <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Date</th>
+                                <!--
+                                <th class="mdc-data-table__header-cell mdc-data-table__header-cell--numeric" role="columnheader" scope="col">Carbs (g)</th>
+                                <th class="mdc-data-table__header-cell mdc-data-table__header-cell--numeric" role="columnheader" scope="col">Protein (g)</th>
+                                <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Comments</th>
+                                -->
+                            </tr>
+                        </thead>
+                        <tbody class="mdc-data-table__content">
+                            <!--
+                            <tr class="mdc-data-table__row">
+                                <td class="mdc-data-table__cell">Frozen yogurt</td>
+                                
+                                <td class="mdc-data-table__cell mdc-data-table__cell--numeric">24</td>
+                                <td class="mdc-data-table__cell mdc-data-table__cell--numeric">4.0</td>
+                                <td class="mdc-data-table__cell">Super tasty</td>
+                                
+                            </tr>
+                            <tr class="mdc-data-table__row">
+                                <td class="mdc-data-table__cell">Ice cream sandwich</td>
+                                <td class="mdc-data-table__cell mdc-data-table__cell--numeric">37</td>
+                                <td class="mdc-data-table__cell mdc-data-table__cell--numeric">4.33333333333</td>
+                                <td class="mdc-data-table__cell">I like ice cream more</td>
+                            </tr>
+                            <tr class="mdc-data-table__row">
+                                <td class="mdc-data-table__cell">Eclair</td>
+                                <td class="mdc-data-table__cell mdc-data-table__cell--numeric">24</td>
+                                <td class="mdc-data-table__cell mdc-data-table__cell--numeric">6.0</td>
+                                <td class="mdc-data-table__cell">New filing flavor</td>
+                            </tr>
+                            -->
+                        </tbody>
+                    </table>
+                </div>
             </div>
-            <div class="view" id="chart">
+            
+            <div class="view screen4-view" id="chart">
                 Chart
             </div>
         </main>
         
         <script>
             mdc.topAppBar.MDCTopAppBar.attachTo(document.querySelector("header.mdc-top-app-bar"));
+            mdc.ripple.MDCRipple.attachTo(document.querySelector(".addCountry-button"));
+            mdc.ripple.MDCRipple.attachTo(document.querySelector(".displayChart-button"));
             const drawer = mdc.drawer.MDCDrawer.attachTo(document.querySelector(".mdc-drawer"));
             
             const hideViews = () => {
@@ -98,6 +223,68 @@
                     drawer.open = false;
                 });
             });
+            
+            // Initialize both URL endpoint for JSON in COVID-19 data AND datalist for selected countries.
+            const apiEndpoint = "https://pomber.github.io/covid19/timeseries.json";
+            const dataList = document.querySelector("datalist#countries");
+            
+            // Display all country names in datalist.
+            fetch(apiEndpoint)
+                .then(response => {
+                    return response.json();
+                })
+                .then(data => {
+                    // empty the list 
+                    while (dataList.firstChild)
+                        dataList.removeChild(dataList.firstChild);
+                
+                    for (let countryName in data) {
+                        let option = document.createElement("option");
+                        option.value = countryName;
+                        dataList.append(option);
+                    }
+            }); 
+            
+            const selectedCountries = document.querySelector("ul.mdc-list");
+            let countryItems = [];
+            
+            // Add selected countries to display list below.
+            document.querySelector(".addCountry-button").addEventListener("click", (e) => { 
+                let countryName = document.querySelector("input#list").value;
+                
+                // Checks for duplicate country names.
+                if (!countryItems.includes(countryName)) {
+                    let listItem = document.createElement("li");
+                    listItem.textContent = countryName;
+                    listItem.style.color = "#000080";
+                    countryItems.push(countryName);
+                    selectedCountries.append(listItem);
+                }
+            });
+            
+            //const dataTable = new MDCDataTable(document.querySelector('.mdc-data-table'));
+            //const dataTable = new mdc.dataTable.MDCDataTable.attachTo(document.querySelector('.mdc-data-table'));
+            const dataTable = document.querySelector('.mdc-data-table');
+            
+            document.querySelector(".displayChart-button").addEventListener("click", (e) => {
+                fetch(apiEndpoint)
+                .then(response => {
+                    return response.json();
+                })
+                .then(data => {
+                    for (const array of data["Afghanistan"]) {
+                        console.log(array["date"]);
+                        let row = document.createElement("tr.mdc-data-table__row");
+                        //let td = document.createElement("td.mdc-data-table__cell");
+                        row.textContent = array["date"];
+                        //row.append(td);
+                        dataTable.append(row);
+                        //document.querySelector("tbody.mdc-data-table__content").append(row);
+                    }
+                }); 
+            });
+            console.log(dataTable);
+            
         </script>
     </body>
 
