@@ -136,58 +136,18 @@
         <!-- Screen 2 -->
         <div class="view screen2-view" id="dataTable">
             <strong><p id="dataTitle">Number of Confirmed COVID-19 Cases by Country.</p></strong>
-            <!--
-                <div class="mdc-data-table">
-                    <table class="mdc-data-table__table" aria-label="Dessert calories">
-                        <thead>
-                            <tr class="mdc-data-table__header-row">
-                                <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Dessert</th>
-                                <th class="mdc-data-table__header-cell mdc-data-table__header-cell--numeric" role="columnheader" scope="col">Carbs (g)</th>
-                                <th class="mdc-data-table__header-cell mdc-data-table__header-cell--numeric" role="columnheader" scope="col">Protein (g)</th>
-                                <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Comments</th>
-                            </tr>
-                        </thead>
-                        <tbody class="mdc-data-table__content">
-                            <tr class="mdc-data-table__row">
-                                <td class="mdc-data-table__cell">Frozen yogurt</td>
-                                <td class="mdc-data-table__cell mdc-data-table__cell--numeric">24</td>
-                                <td class="mdc-data-table__cell mdc-data-table__cell--numeric">4.0</td>
-                                <td class="mdc-data-table__cell">Super tasty</td>
-                            </tr>
-                            <tr class="mdc-data-table__row">
-                                <td class="mdc-data-table__cell">Ice cream sandwich</td>
-                                <td class="mdc-data-table__cell mdc-data-table__cell--numeric">37</td>
-                                <td class="mdc-data-table__cell mdc-data-table__cell--numeric">4.33333333333</td>
-                                <td class="mdc-data-table__cell">I like ice cream more</td>
-                            </tr>
-                            <tr class="mdc-data-table__row">
-                                <td class="mdc-data-table__cell">Eclair</td>
-                                <td class="mdc-data-table__cell mdc-data-table__cell--numeric">24</td>
-                                <td class="mdc-data-table__cell mdc-data-table__cell--numeric">6.0</td>
-                                <td class="mdc-data-table__cell">New filing flavor</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                -->
-
+            
             <div class="mdc-data-table">
                 <table class="mdc-data-table__table" aria-label="COVID-19 Confirmed Cases by Country">
                     <thead>
                         <tr id="columns" class="mdc-data-table__header-row">
                             <th class="mdc-data-table__header-cell" role="columnheader" scope="col"><strong id="bold">Date</strong></th>
-                            <!--
-                                <th class="mdc-data-table__header-cell mdc-data-table__header-cell--numeric" role="columnheader" scope="col">Carbs (g)</th>
-                                <th class="mdc-data-table__header-cell mdc-data-table__header-cell--numeric" role="columnheader" scope="col">Protein (g)</th>
-                                <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Comments</th>
-                                -->
                         </tr>
                         <th class="template mdc-data-table__header-cell mdc-data-table__header-cell--numeric" role="columnheader" scope="col"><strong>Carbs (g)</strong></th>
                     </thead>
                     <tbody class="mdc-data-table__content"></tbody>
                     <tr class="template mdc-data-table__row">
                         <td class="mdc-data-table__cell">Frozen yogurt</td>
-                        <!--<td class="mdc-data-table__cell">Frozen yogurt</td>-->
                     </tr>
                     <td class="template mdc-data-table__cell">Frozen yogurt</td>
                 </table>
@@ -210,7 +170,6 @@
             return response.json();
         }).then(data => {
             for(const array of data["Afghanistan"]) {
-                //console.log(array);
                 // Create a cell for each date.
                 let clone = dataTable.querySelector("tr.template").cloneNode(true);
                 clone.classList.remove("template");
@@ -218,12 +177,6 @@
                 clone.querySelector("td.mdc-data-table__cell").textContent = array["date"];
                 document.querySelector("tbody.mdc-data-table__content").appendChild(clone);
             }
-            /*
-                    let rows = document.querySelectorAll(".rowByDate");
-                    rows.forEach(item => {
-                        console.log(item.querySelector("td").textContent); 
-                    });
-                    */
         });
         
         mdc.topAppBar.MDCTopAppBar.attachTo(document.querySelector("header.mdc-top-app-bar"));
@@ -278,7 +231,7 @@
                 selectedCountries.appendChild(listItem);
             }
         });
-         //const dataTable = document.querySelector('div.mdc-data-table table.mdc-data-table__table');
+       
         document.querySelector(".displayChart-button").addEventListener("click", (e) => {
             fetch(apiEndpoint).then(response => {
                 return response.json();
@@ -292,7 +245,6 @@
                     country.classList.add("country")
                     country.querySelector("strong").textContent = item;
                     document.querySelector("tr#columns").appendChild(country);
-                    //console.log(data[item]);
                     
                     let i = 0;
                     rows.forEach(entry => {
@@ -305,53 +257,6 @@
                     });
                 }
                 
-                /*
-                let columns = document.querySelectorAll(".country");
-                columns.forEach(item => {
-                    rows.forEach(entry => {
-                         let clone2 = dataTable.querySelector("td.template").cloneNode(true);
-                         clone2.classList.remove("template");
-                         clone2.textContent = "hi"
-                         entry.appendChild(clone2);
-                    });
-                })
-                */
-                
-                
-                /*
-                let rows = document.querySelectorAll(".rowByDate").forEach(item => {
-                    console.log(item.querySelector("td").textContent); 
-                });
-                */
-                
-                /*
-                    for (let item of countryItems) {
-                        // Create a header column for each selected country.
-                        let clone = dataTable.querySelector("th.template").cloneNode(true);
-                        clone.classList.remove("template");
-                        clone.classList.add("countryCases")
-                        clone.textContent = item;
-                        document.querySelector("tr#columns").appendChild(clone);
-                        
-                        let i = 0;
-                        let columns = document.querySelectorAll(".countryCases");
-                        
-                        for (const array of data[item]) {
-                            columns.forEach(item => {
-                                console.log(item.textContent);
-                            });
-                            
-                            let clone = dataTable.querySelector("tr.template").cloneNode(true);
-                            clone.classList.remove("template");
-                            clone.querySelector("td.mdc-data-table__cell").textContent = array["confirmed"];
-                            document.querySelector("tbody.mdc-data-table__content").appendChild(clone);
-                            console.log(clone);
-                            
-                        }
-                       
-                    }
-                    */
-                //console.log(data);
             });
             
         });
