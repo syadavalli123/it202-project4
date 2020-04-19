@@ -1,124 +1,137 @@
 <!DOCTYPE html>
 <html>
 
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width">
-        <title>Project4</title>
-        <link href="https://unpkg.com/material-components-web@v4.0.0/dist/material-components-web.min.css" rel="stylesheet">
-        <script src="https://unpkg.com/material-components-web@v4.0.0/dist/material-components-web.min.js"></script>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-        
-        <style>
-            :root { --mdc-theme-primary: navy; }
-            .mdc-drawer .mdc-list-item--activated .mdc-list-item__graphic {
-                color: var(--mdc-theme-primary);
-            }
-            .mdc-drawer .mdc-list-item--activated {
-                color: var(--mdc-theme-primary);
-            }
-            body { 
-                margin: 0; 
-                background-color: beige;
-                font-family: sans-serif;
-            }
-            main { margin-left: 8px; }
-            .view { 
-                display: none;
-                padding: 40px;
-            }
-            #home {
-                font-family: sans-serif;
-                font-size: 20px;
-            }
-            #world_map {
-                padding: 80px;
-                margin-left: auto;
-                margin-right: auto;
-                display: block;
-                position: absolute;
-            }
-            input { width: 500px; }
-            #list { display: inline-block; }
-            .template {display: none;}
-        </style>
-    </head>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Project4</title>
+    <link href="https://unpkg.com/material-components-web@v4.0.0/dist/material-components-web.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/material-components-web@v4.0.0/dist/material-components-web.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
-    <body>
-        <aside class="mdc-drawer mdc-drawer--modal">
-            <div class="mdc-drawer__content">
-                <nav class="mdc-list">
-                    <a class="mdc-list-item mdc-list-item--activated" href="#home" aria-current="page">
-                        <i class="material-icons mdc-list-item__graphic" aria-hidden="true">home</i>
-                        <span class="mdc-list-item__text">Home</span>
-                    </a>
-                    <a class="mdc-list-item" href="#search">
-                        <i class="material-icons mdc-list-item__graphic" aria-hidden="true">search</i>
-                        <span class="mdc-list-item__text">Search</span>
-                    </a>
-                    <a class="mdc-list-item" href="#dataTable">
-                        <i class="material-icons mdc-list-item__graphic" aria-hidden="true">table_chart</i>
-                        <span class="mdc-list-item__text">Data Table</span>
-                    </a>
-                    <a class="mdc-list-item" href="#chart">
-                        <i class="material-icons mdc-list-item__graphic" aria-hidden="true">show_chart</i>
-                        <span class="mdc-list-item__text">Chart</span>
-                    </a>
-                </nav>
-            </div>
-        </aside>
-        
-        <div class="mdc-drawer-scrim"></div>
-       
+    <style>
+        :root {
+            --mdc-theme-primary: navy;
+        }
+        .mdc-drawer .mdc-list-item--activated .mdc-list-item__graphic {
+            color: var(--mdc-theme-primary);
+        }
+        .mdc-drawer .mdc-list-item--activated {
+            color: var(--mdc-theme-primary);
+        }
+        body {
+            margin: 0;
+            background-color: beige;
+            font-family: sans-serif;
+        }
+        main {
+            margin-left: 8px;
+        }
+        .view {
+            display: none;
+            padding: 40px;
+        }
+        #home {
+            font-family: sans-serif;
+            font-size: 20px;
+        }
+        #world_map {
+            padding: 80px;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+            position: absolute;
+        }
+        input {
+            width: 500px;
+        }
+        #list {
+            display: inline-block;
+        }
+        .template {
+            display: none;
+        }
+        td {
+            text-align: center;
+        }
+    </style>
+</head>
 
-        <header class="mdc-top-app-bar">
-            <div class="mdc-top-app-bar__row">
-                <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
-                    <button class="material-icons mdc-top-app-bar__navigation-icon mdc-icon-button">menu</button>
-                    <span class="mdc-top-app-bar__title">COVID-19 Data</span>
-                </section>
+<body>
+    <aside class="mdc-drawer mdc-drawer--modal">
+        <div class="mdc-drawer__content">
+            <nav class="mdc-list">
+                <a class="mdc-list-item mdc-list-item--activated" href="#home" aria-current="page">
+                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">home</i>
+                    <span class="mdc-list-item__text">Home</span>
+                </a>
+                <a class="mdc-list-item" href="#search">
+                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">search</i>
+                    <span class="mdc-list-item__text">Search</span>
+                </a>
+                <a class="mdc-list-item" href="#dataTable">
+                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">table_chart</i>
+                    <span class="mdc-list-item__text">Data Table</span>
+                </a>
+                <a class="mdc-list-item" href="#chart">
+                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">show_chart</i>
+                    <span class="mdc-list-item__text">Chart</span>
+                </a>
+            </nav>
+        </div>
+    </aside>
+
+    <div class="mdc-drawer-scrim"></div>
+
+    <!-- Top App Bar -->
+    <header class="mdc-top-app-bar">
+        <div class="mdc-top-app-bar__row">
+            <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
+                <button class="material-icons mdc-top-app-bar__navigation-icon mdc-icon-button">menu</button>
+                <span class="mdc-top-app-bar__title">COVID-19 Data</span>
+            </section>
+        </div>
+    </header>
+
+    <main class="mdc-top-app-bar--fixed-adjust">
+        <div class="view homeScreen-view" id="home">
+            For each country, you can access data that is about the number of confirmed cases, deaths, and patients who recovered from COVID-19.
+            <div id="world_map">
+                <img src="world-map.jpg">
             </div>
-        </header>
-        
-        <main class="mdc-top-app-bar--fixed-adjust">
-            <div class="view screen1-view" id="home">
-                For each country, you can access data 
-                that is about the number of confirmed cases, deaths, and patients who recovered from COVID-19.
-                <div id="world_map">
-                    <img src="world-map.jpg">
-                </div>
+        </div>
+
+        <!-- Screen 1 -->
+        <div class="view screen1-view" id="search">
+            <div style="padding-bottom: 20px">
+                Find and add at least 1 country to be charted.
             </div>
-            <div class="view screen2-view" id="search">
-                <div style="padding-bottom: 20px">
-                    Find and add at least 1 country to be charted.
-                </div>
-                <div>
-                    <input list="countries" id="list">
-                    <datalist id="countries">
-                    </datalist>
-                    
-                    <button class="mdc-button addCountry-button mdc-button--raised">
-                        <div class="mdc-button__ripple"></div>
-                        <span class="mdc-button__label">Add Country</span>
-                    </button>
-                    
-                    <button class="mdc-button displayChart-button mdc-button--raised">
-                        <div class="mdc-button__ripple"></div>
-                        <span class="mdc-button__label">Display Chart</span>
-                    </button>
-                    
-                    <!-- Add display list of selected countries below-->
-                    <ul class="mdc-list">
-                    </ul>
-                    
-                    
-                </div>
+            <div>
+                <input list="countries" id="list">
+                <datalist id="countries">
+                </datalist>
+
+                <button class="mdc-button addCountry-button mdc-button--raised">
+                    <div class="mdc-button__ripple"></div>
+                    <span class="mdc-button__label">Add Country</span>
+                </button>
+
+                <button class="mdc-button displayChart-button mdc-button--raised">
+                    <div class="mdc-button__ripple"></div>
+                    <span class="mdc-button__label">Display Chart</span>
+                </button>
+
+                <!-- Add display list of selected countries below-->
+                <ul class="mdc-list">
+                </ul>
             </div>
-            
-            
-            <div class="view screen3-view" id="dataTable">
-                Data Table<br>
-                <!--
+        </div>
+
+        <!-- Screen 2 -->
+        <div class="view screen2-view" id="dataTable">
+            Number of confirmed COVID-19 cases by country.
+            <br><br>
+            <!--
                 <div class="mdc-data-table">
                     <table class="mdc-data-table__table" aria-label="Dessert calories">
                         <thead>
@@ -152,141 +165,191 @@
                     </table>
                 </div>
                 -->
-            
-                <div class="mdc-data-table">
-                    <table class="mdc-data-table__table" aria-label="COVID-19 Confirmed Cases by Country">
-                        <thead>
-                            <tr class="mdc-data-table__header-row">
-                                <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Date</th>
-                                <!--
+
+            <div class="mdc-data-table">
+                <table class="mdc-data-table__table" aria-label="COVID-19 Confirmed Cases by Country">
+                    <thead>
+                        <tr id="columns" class="mdc-data-table__header-row">
+                            <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Date</th>
+                            <!--
                                 <th class="mdc-data-table__header-cell mdc-data-table__header-cell--numeric" role="columnheader" scope="col">Carbs (g)</th>
                                 <th class="mdc-data-table__header-cell mdc-data-table__header-cell--numeric" role="columnheader" scope="col">Protein (g)</th>
                                 <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Comments</th>
                                 -->
-                            </tr>
-                        </thead>
-                        <tbody class="mdc-data-table__content">
-                            <!--
-                            <tr class="mdc-data-table__row">
-                                <td class="mdc-data-table__cell">Frozen yogurt</td>
-                                <td class="mdc-data-table__cell mdc-data-table__cell--numeric">24</td>
-                                <td class="mdc-data-table__cell mdc-data-table__cell--numeric">4.0</td>
-                                <td class="mdc-data-table__cell">Super tasty</td>
-                                
-                            </tr>
-                            <tr class="mdc-data-table__row">
-                                <td class="mdc-data-table__cell">Ice cream sandwich</td>
-                                <td class="mdc-data-table__cell mdc-data-table__cell--numeric">37</td>
-                                <td class="mdc-data-table__cell mdc-data-table__cell--numeric">4.33333333333</td>
-                                <td class="mdc-data-table__cell">I like ice cream more</td>
-                            </tr>
-                            <tr class="mdc-data-table__row">
-                                <td class="mdc-data-table__cell">Eclair</td>
-                                <td class="mdc-data-table__cell mdc-data-table__cell--numeric">24</td>
-                                <td class="mdc-data-table__cell mdc-data-table__cell--numeric">6.0</td>
-                                <td class="mdc-data-table__cell">New filing flavor</td>
-                            </tr>
-                            -->
-                        </tbody>
-                        <tr class="template mdc-data-table__row">
-                            <td class="mdc-data-table__cell">Frozen yogurt</td>
                         </tr>
-                    </table>
-                </div>
-                
+                        <th class="template mdc-data-table__header-cell mdc-data-table__header-cell--numeric" role="columnheader" scope="col">Carbs (g)</th>
+                    </thead>
+                    <tbody class="mdc-data-table__content"></tbody>
+                    <tr class="template mdc-data-table__row">
+                        <td class="mdc-data-table__cell">Frozen yogurt</td>
+                        <!--<td class="mdc-data-table__cell">Frozen yogurt</td>-->
+                    </tr>
+                    <td class="template mdc-data-table__cell">Frozen yogurt</td>
+                </table>
             </div>
-            
-            <div class="view screen4-view" id="chart">
-                Chart
-            </div>
-        </main>
+        </div>
+
+        <!-- Screen 3 -->
+        <div class="view screen3-view" id="chart">
+            Chart
+        </div>
+    </main>
+
+    <script>
+        // Initialize both URL endpoint for JSON in COVID-19 data AND datalist for selected countries.
+        const apiEndpoint = "https://pomber.github.io/covid19/timeseries.json";
+        const dataList = document.querySelector("datalist#countries");
+        const dataTable = document.querySelector('div.mdc-data-table table.mdc-data-table__table');
         
-        <script>
-            mdc.topAppBar.MDCTopAppBar.attachTo(document.querySelector("header.mdc-top-app-bar"));
-            mdc.ripple.MDCRipple.attachTo(document.querySelector(".addCountry-button"));
-            mdc.ripple.MDCRipple.attachTo(document.querySelector(".displayChart-button"));
-            const drawer = mdc.drawer.MDCDrawer.attachTo(document.querySelector(".mdc-drawer"));
-            
-            const hideViews = () => {
-                document.querySelectorAll("div.view").forEach(item => {
-                    item.style.display = "none";
-                });
+        fetch(apiEndpoint).then(response => {
+            return response.json();
+        }).then(data => {
+            for(const array of data["Afghanistan"]) {
+                //console.log(array);
+                // Create a cell for each date.
+                let clone = dataTable.querySelector("tr.template").cloneNode(true);
+                clone.classList.remove("template");
+                clone.classList.add("rowByDate");
+                clone.querySelector("td.mdc-data-table__cell").textContent = array["date"];
+                document.querySelector("tbody.mdc-data-table__content").appendChild(clone);
             }
-            
-            document.querySelector(".mdc-top-app-bar__navigation-icon").addEventListener("click", (e) => {
-                drawer.open = true;
+            /*
+                    let rows = document.querySelectorAll(".rowByDate");
+                    rows.forEach(item => {
+                        console.log(item.querySelector("td").textContent); 
+                    });
+                    */
+        });
+        
+        mdc.topAppBar.MDCTopAppBar.attachTo(document.querySelector("header.mdc-top-app-bar"));
+        mdc.ripple.MDCRipple.attachTo(document.querySelector(".addCountry-button"));
+        mdc.ripple.MDCRipple.attachTo(document.querySelector(".displayChart-button"));
+        const drawer = mdc.drawer.MDCDrawer.attachTo(document.querySelector(".mdc-drawer"));
+        const hideViews = () => {
+            document.querySelectorAll("div.view").forEach(item => {
+                item.style.display = "none";
             });
-            
-            document.querySelectorAll("aside.mdc-drawer a.mdc-list-item").forEach(item => {
-                item.addEventListener("click", event => {
-                    //handle click
-                    hideViews();
-                    let target = item.getAttribute("href");
-                    document.querySelector(target).style.display = "block";
-                    drawer.open = false;
-                });
+        }
+        
+        document.querySelector(".mdc-top-app-bar__navigation-icon").addEventListener("click", (e) => {
+            drawer.open = true;
+        });
+        
+        document.querySelectorAll("aside.mdc-drawer a.mdc-list-item").forEach(item => {
+            item.addEventListener("click", event => {
+                //handle click
+                hideViews();
+                let target = item.getAttribute("href");
+                document.querySelector(target).style.display = "block";
+                drawer.open = false;
             });
-            
-            // Initialize both URL endpoint for JSON in COVID-19 data AND datalist for selected countries.
-            const apiEndpoint = "https://pomber.github.io/covid19/timeseries.json";
-            const dataList = document.querySelector("datalist#countries");
-            
-            // Display all country names in datalist.
-            fetch(apiEndpoint)
-                .then(response => {
-                    return response.json();
-                })
-                .then(data => {
-                    // empty the list 
-                    while (dataList.firstChild)
-                        dataList.removeChild(dataList.firstChild);
+        });
+        
+         // Display all country names in datalist.
+        fetch(apiEndpoint).then(response => {
+            return response.json();
+        }).then(data => {
+            // empty the list 
+            while(dataList.firstChild) dataList.removeChild(dataList.firstChild);
+            for(let countryName in data) {
+                let option = document.createElement("option");
+                option.value = countryName;
+                dataList.appendChild(option);
+            }
+        });
+        
+        const selectedCountries = document.querySelector("ul.mdc-list");
+        let countryItems = [];
+        
+         // Add selected countries to display list below.
+        document.querySelector(".addCountry-button").addEventListener("click", (e) => {
+            let countryName = document.querySelector("input#list").value;
+            // Checks for duplicate country names.
+            if(!countryItems.includes(countryName)) {
+                let listItem = document.createElement("li");
+                listItem.textContent = countryName;
+                listItem.style.color = "#000080";
+                countryItems.push(countryName);
+                selectedCountries.appendChild(listItem);
+            }
+        });
+         //const dataTable = document.querySelector('div.mdc-data-table table.mdc-data-table__table');
+        document.querySelector(".displayChart-button").addEventListener("click", (e) => {
+            fetch(apiEndpoint).then(response => {
+                return response.json();
+            }).then(data => {
+                let rows = document.querySelectorAll(".rowByDate");
                 
-                    for (let countryName in data) {
-                        let option = document.createElement("option");
-                        option.value = countryName;
-                        dataList.appendChild(option);
-                    }
-            }); 
-            
-            const selectedCountries = document.querySelector("ul.mdc-list");
-            let countryItems = [];
-            
-            // Add selected countries to display list below.
-            document.querySelector(".addCountry-button").addEventListener("click", (e) => { 
-                let countryName = document.querySelector("input#list").value;
-                
-                // Checks for duplicate country names.
-                if (!countryItems.includes(countryName)) {
-                    let listItem = document.createElement("li");
-                    listItem.textContent = countryName;
-                    listItem.style.color = "#000080";
-                    countryItems.push(countryName);
-                    selectedCountries.appendChild(listItem);
+                for(let item of countryItems) {
+                    // Create a header column for each selected country.
+                    let country = dataTable.querySelector("th.template").cloneNode(true);
+                    country.classList.remove("template");
+                    country.classList.add("country")
+                    country.textContent = item;
+                    document.querySelector("tr#columns").appendChild(country);
+                    //console.log(data[item]);
+                    
+                    let i = 0;
+                    rows.forEach(entry => {
+                        let cell = dataTable.querySelector("td.template").cloneNode(true);
+                        cell.classList.remove("template");
+                        cell.classList.add("numberOfCases");
+                        cell.textContent = data[item][i]["confirmed"];
+                        entry.appendChild(cell);
+                        i++;
+                    });
                 }
-            });
-            
-            //const dataTable = new MDCDataTable(document.querySelector('.mdc-data-table'));
-            //const dataTable = new mdc.dataTable.MDCDataTable.attachTo(document.querySelector('.mdc-data-table'));
-            const dataTable = document.querySelector('div.mdc-data-table table.mdc-data-table__table');
-            
-            document.querySelector(".displayChart-button").addEventListener("click", (e) => {
-                fetch(apiEndpoint)
-                .then(response => {
-                    return response.json();
+                
+                /*
+                let columns = document.querySelectorAll(".country");
+                columns.forEach(item => {
+                    rows.forEach(entry => {
+                         let clone2 = dataTable.querySelector("td.template").cloneNode(true);
+                         clone2.classList.remove("template");
+                         clone2.textContent = "hi"
+                         entry.appendChild(clone2);
+                    });
                 })
-                .then(data => {
-                    for (const array of data["Afghanistan"]) {
-                        console.log(array["date"]);
-                        let clone = dataTable.querySelector("tr.template").cloneNode(true);
+                */
+                
+                
+                /*
+                let rows = document.querySelectorAll(".rowByDate").forEach(item => {
+                    console.log(item.querySelector("td").textContent); 
+                });
+                */
+                
+                /*
+                    for (let item of countryItems) {
+                        // Create a header column for each selected country.
+                        let clone = dataTable.querySelector("th.template").cloneNode(true);
                         clone.classList.remove("template");
-                        clone.querySelector("td.mdc-data-table__cell").textContent = array["date"];
-                        dataTable.appendChild(clone);
+                        clone.classList.add("countryCases")
+                        clone.textContent = item;
+                        document.querySelector("tr#columns").appendChild(clone);
+                        
+                        let i = 0;
+                        let columns = document.querySelectorAll(".countryCases");
+                        
+                        for (const array of data[item]) {
+                            columns.forEach(item => {
+                                console.log(item.textContent);
+                            });
+                            
+                            let clone = dataTable.querySelector("tr.template").cloneNode(true);
+                            clone.classList.remove("template");
+                            clone.querySelector("td.mdc-data-table__cell").textContent = array["confirmed"];
+                            document.querySelector("tbody.mdc-data-table__content").appendChild(clone);
+                            console.log(clone);
+                            
+                        }
+                       
                     }
-                }); 
+                    */
+                //console.log(data);
             });
-            console.log(dataTable);
-            
-        </script>
-    </body>
+        });
+    </script>
+</body>
 
 </html>
